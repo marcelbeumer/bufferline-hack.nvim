@@ -251,7 +251,12 @@ function Buffer:visibility()
   return visibility.NONE
 end
 
-function Buffer:current() return api.nvim_get_current_buf() == self.id end
+function Buffer:current()
+  local winnr = vim.api.nvim_tabpage_get_win(0)
+  local win = vim.fn.getwininfo(winnr)
+  return win[1].bufnr == self.id
+  -- return api.nvim_get_current_buf() == self.id
+end
 
 --- If the buffer is already part of state then it is existing
 --- otherwise it is new
