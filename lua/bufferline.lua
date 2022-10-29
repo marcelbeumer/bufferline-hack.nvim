@@ -281,7 +281,8 @@ function M.setup(conf)
   hover.setup(preferences)
   setup_commands()
   setup_autocommands(preferences)
-  vim.o.tabline = "%!v:lua.nvim_bufferline()"
+  -- vim.o.tabline = "%!v:lua.nvim_bufferline()"
+  vim.o.winbar = "%!v:lua.nvim_bufferline()"
   toggle_bufferline()
 end
 
